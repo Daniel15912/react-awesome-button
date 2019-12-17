@@ -25,7 +25,7 @@ class CustomiseBorder extends React.Component {
     };
   }
 
-  componentWillReceiveProps(props) {
+  UNSAFE_componentWillReceiveProps(props) {
     if (props.value !== this.props.value) {
       this.setValue(props.value);
     }
@@ -33,17 +33,23 @@ class CustomiseBorder extends React.Component {
 
   onRangeChange = (event) => {
     const { value } = event.target;
-    this.setState({
-      width: value,
-    }, this.refreshValues);
-  }
+    this.setState(
+      {
+        width: value,
+      },
+      this.refreshValues
+    );
+  };
 
   onColorChange = (event) => {
     const { value } = event.target;
-    this.setState({
-      color: value,
-    }, this.refreshValues);
-  }
+    this.setState(
+      {
+        color: value,
+      },
+      this.refreshValues
+    );
+  };
 
   setValue(value) {
     let color = '#FFFFFF';
@@ -64,7 +70,7 @@ class CustomiseBorder extends React.Component {
         value: `${this.state.width}px solid ${this.state.color}`,
       },
     });
-  }
+  };
 
   render() {
     return (

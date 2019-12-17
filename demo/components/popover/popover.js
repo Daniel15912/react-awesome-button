@@ -21,7 +21,7 @@ class Popover extends React.Component {
     this.toggleTimer = null;
   }
 
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
     if (this.props.opened !== newProps.opened) {
       this.toggleVisibility(newProps.opened);
     }
@@ -60,13 +60,12 @@ class Popover extends React.Component {
   }
 
   render() {
-    const {
-      text,
-      module,
-    } = this.props;
+    const { text, module } = this.props;
     return (
       <div
-        ref={(container) => { this.container = container; }}
+        ref={(container) => {
+          this.container = container;
+        }}
         className={Styles.container}
       >
         <div className={Styles.window}>
